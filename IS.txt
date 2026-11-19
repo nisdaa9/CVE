@@ -20,7 +20,7 @@ moguca tr slucaja barem do sad na ispitima, da trazi adresu mail servera ili adr
 ukoliko trazi mail server adresu---> kucamo komandu "dig unmo.ba mx", nakon tog dobit cemo nesto kao edge2019.edu.fit.ba, uradimo 
 "ping edge2019.edu.fit.ba" i dobit cemo u zagradi traženu adresu.
 
-ukoliko trazi adresu dns servera-->kucamo "dig mrak.ba ns" i poslije tog pingujemo ono sto smo dobili da bismo dobili adresu.
+ukoliko trazi adresu dns servera-->kucamo "dig mrak.ba ns" i poslije tog pingujemo ono sto smo dobili da bismo dobili adresu, ukoliko trazi primarnu dns adresu koristiti dig klix.ba soa +short.
 
 ukoliko trazi adresu web servera--> kucamo "dig olx.ba A"
 
