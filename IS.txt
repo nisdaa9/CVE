@@ -34,7 +34,7 @@ na eth0 dodati ip adresu za 1 manju od one koju je prfoesor dao, ako ima neka ad
 "sudo ip addr flus dev eth0"
 dodavanje ip adrese "sudo ip addr add <adresa za broj manja>/20 dev eth0", uraditi "ping <adresa s table>"
 poslije ovog ide glavni dio odnosno NMAP --> "nmap -sV -O <adresa s table>"  tu ce se ispisat verzija apachea
-
+za exim nc ipadresa broj porta
 
 5.zadatak----------------------------------------------------------------------
 koristiti internet za provejravanje koji CVE affecta nasu verziju apachea
